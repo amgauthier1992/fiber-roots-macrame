@@ -1,0 +1,76 @@
+.shopping-item {
+  /* margin-left: 30px; */
+  /* background-color: rgb(255, 255, 255); */
+  border-radius: 12px;
+  /* box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.699); */
+  margin-bottom: 30px;
+}
+
+.shopping-item:hover {
+  background-color: rgba(255, 255, 255, 0.164);
+  border-radius: 12px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  /* filter: drop-shadow(16px 16px 16px rgb(112, 109, 109)); */
+  /* box-shadow: 1px 1px rgba(128, 128, 128, 0.699); */
+}
+
+img#item-thumbnail {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 24px;
+}
+
+img#item-thumbnail:hover {
+  cursor: pointer;
+}
+
+#item-h2 {
+  margin-left: 20px;
+}
+
+h3 {
+  margin-left: 10px;
+}
+
+#item-description {
+  margin: 10px 10px 10px 10px;
+  font-size: 20px;
+}
+
+#i-price {
+  font-family: "Open Sans", sans-serif;
+  font-size: 32px;
+  margin-left: 10px;
+}
+
+#i-status {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+#add-cart-btn {
+  font-size: 16px;
+  padding: 12px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.btn-enabled:hover {
+  cursor: pointer;
+}
+
+.flippy-cardContainer {
+  border-radius: 12px;
+  margin-left: 30px;
+  margin-top: -25px;
+}

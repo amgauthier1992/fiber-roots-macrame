@@ -1,0 +1,44 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgray;
+  /* background-color: rgb(255, 255, 255); */
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Open Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Bohemian";
+  src: url("../../fonts/bohemian.ttf") format("truetype");
+}
+
+/* Google Sign In */
+
+svg {
+  margin-top: 6px;
+}
+
+svg.abcRioButtonSvg {
+  margin-top: -1px;
+}
+
+div.abcRioButton.abcRioButtonLightBlue {
+  height: 50px;
+}
+
+.g-signin2 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+span {
+  display: block;
+  margin-right: 5px;
+  font-size: 18px;
+}

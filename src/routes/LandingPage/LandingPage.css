@@ -1,0 +1,26 @@
+#landing-description {
+  font-family: "Bohemian";
+  font-size: 105px;
+  /* font-weight: bolder; */
+  /* text-shadow: 1.5px 1.5px 1.5px #000000; */
+  /* color: rgba(255, 255, 255, 0.849); */
+  /* color: rgb(153, 117, 71); */
+  color: rgba(87, 75, 59, 0.842);
+  width: 700px;
+  margin: 400px 0 0 75px;
+  word-wrap: break-word;
+}
+
+#macrame-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1170px;
+  margin-right: 400px;
+  z-index: 0;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+}

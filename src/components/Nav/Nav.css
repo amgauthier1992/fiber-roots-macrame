@@ -1,0 +1,18 @@
+#nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#nav a {
+  font-size: 36px;
+  color: rgba(87, 75, 59, 0.842);
+  /* color: rgba(109, 76, 16, 0.637); */
+  text-decoration: none;
+  margin-right: 50px;
+}
+
+.fa-shopping-bag {
+  height: 50px;
+  width: 50px;
+}
