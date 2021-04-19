@@ -64,7 +64,7 @@ class GoogleBtn extends React.Component {
           onLogoutSuccess={ this.logout }
           onFailure={ this.handleLogoutFailure }
           render={renderProps => (
-            <img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='profile-icon' onClick={renderProps.onClick}/>
+            <img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='google-profile-icon' onClick={renderProps.onClick}/>
           )}
         />
         : 
