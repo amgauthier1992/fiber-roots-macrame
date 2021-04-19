@@ -37,22 +37,6 @@ class App extends React.Component {
     });
   };
 
-  // onSignIn = (googleUser) => {
-  //   console.log('google')
-  //   let profile = googleUser.getBasicProfile();
-  //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  //   console.log('Name: ' + profile.getName());
-  //   console.log('Image URL: ' + profile.getImageUrl());
-  //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  // }
-
-  // onSignOut = () => {
-  //   let auth2 = gapi.auth2.getAuthInstance();
-  //     auth2.signOut().then(() => {
-  //       console.log('User signed out.');
-  //   });
-  // }
-
   componentDidMount() {
     //Get products from API
     fetch(`${config.REACT_APP_API_ENDPOINT}/api/products`, {
@@ -101,7 +85,6 @@ class App extends React.Component {
             />
           </Switch>
         </StoreContext.Provider>
-        {/* <div className="g-signin2" tabIndex='0' data-onsuccess="onSignIn"></div> */}
       </div>
     );
   };

@@ -29,7 +29,6 @@ class ShoppingItem extends React.Component {
 
     return (
       <Flippy 
-        // flipOnHover={true}
         flipOnClick={true}
         flipDirection="horizontal"
         ref={(r) => this.flippy = r}

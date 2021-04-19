@@ -3,7 +3,7 @@ import config from '../../config';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import './GoogleBtn.css'
 
-const CLIENT_ID = config.CLIENT_ID;
+// const CLIENT_ID = config.CLIENT_ID;
 
 class GoogleBtn extends React.Component {
    constructor(props) {
@@ -54,6 +54,8 @@ class GoogleBtn extends React.Component {
 
   render() {
 
+    const CLIENT_ID = config.CLIENT_ID;
+    
     return (
     <div>
       { this.state.isSignedIn ?
@@ -76,7 +78,6 @@ class GoogleBtn extends React.Component {
           isSignedIn={true}
           render={renderProps => (
             <a href='#' onClick={renderProps.onClick}>Login</a>
-            //<img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='profile-picture' onClick={renderProps.onClick}/>
           )}
         />
       }
