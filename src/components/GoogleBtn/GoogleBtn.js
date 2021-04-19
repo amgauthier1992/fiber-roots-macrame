@@ -1,16 +1,18 @@
 import React from 'react';
 import config from '../../config';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import './GoogleBtn.css'
 
 const CLIENT_ID = config.CLIENT_ID;
 
 class GoogleBtn extends React.Component {
    constructor(props) {
     super(props);
-
+   
     this.state = {
-      isLoggedIn: false,
-      accessToken: ''
+      isSignedIn: false,
+      accessToken: '',
+      picture: ''
     };
 
     this.login = this.login.bind(this);
@@ -22,15 +24,22 @@ class GoogleBtn extends React.Component {
   login = (response) => {
     if(response.accessToken){
       this.setState(state => ({
-        isLoggedIn: true,
+        isSignedIn: true,
         accessToken: response.accessToken
       }));
+    }
+    
+    if(response.tokenId){
+      let payload = JSON.parse(atob(response.tokenId.split('.')[1]))
+      this.setState({
+        picture: payload.picture
+      });
     }
   }
 
   logout = (response) => {
     this.setState(state => ({
-      isLoggedIn: false,
+      isSignedIn: false,
       accessToken: ''
     }));
   }
@@ -44,26 +53,33 @@ class GoogleBtn extends React.Component {
   }
 
   render() {
+
     return (
     <div>
-      { this.state.isLoggedIn ?
+      { this.state.isSignedIn ?
         <GoogleLogout
           clientId={ CLIENT_ID }
-          buttonText='Logout'
           onLogoutSuccess={ this.logout }
           onFailure={ this.handleLogoutFailure }
-        >
-        </GoogleLogout>: <GoogleLogin
+          render={renderProps => (
+            <img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='profile-icon' onClick={renderProps.onClick}/>
+          )}
+        />
+        : 
+        <GoogleLogin
           clientId={ CLIENT_ID }
           buttonText='Login'
           onSuccess={ this.login }
           onFailure={ this.handleLoginFailure }
           cookiePolicy={ 'single_host_origin' }
           responseType='code,token'
+          isSignedIn={true}
+          render={renderProps => (
+            <a href='#' onClick={renderProps.onClick}>Login</a>
+            //<img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='profile-picture' onClick={renderProps.onClick}/>
+          )}
         />
       }
-      { this.state.accessToken ? <h5>Your Access Token: <br/><br/> { this.state.accessToken }</h5> : null }
-
     </div>
     )
   }

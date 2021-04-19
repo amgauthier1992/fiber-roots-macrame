@@ -1,8 +1,9 @@
-import config from '../../config';
 import React from 'react';
+import config from '../../config';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import StoreContext from '../../contexts/StoreContext';
 
+import Nav from '../../components/Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import AboutPage from '../../routes/AboutPage/AboutPage';
 import ShoppingPage from '../../routes/ShoppingPage/ShoppingPage';
@@ -36,14 +37,14 @@ class App extends React.Component {
     });
   };
 
-  onSignIn = (googleUser) => {
-    console.log('google')
-    let profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  }
+  // onSignIn = (googleUser) => {
+  //   console.log('google')
+  //   let profile = googleUser.getBasicProfile();
+  //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  //   console.log('Name: ' + profile.getName());
+  //   console.log('Image URL: ' + profile.getImageUrl());
+  //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  // }
 
   // onSignOut = () => {
   //   let auth2 = gapi.auth2.getAuthInstance();
@@ -54,11 +55,11 @@ class App extends React.Component {
 
   componentDidMount() {
     //Get products from API
-    fetch(`${config.API_ENDPOINT}/api/products`, {
+    fetch(`${config.REACT_APP_API_ENDPOINT}/api/products`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        "Authorization": `Bearer ${config.API_KEY}`
+        // "Authorization": `Bearer ${config.REACT_APP_API_KEY}`
       },
     })
       .then((res) => {
@@ -83,6 +84,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <Nav />
         <StoreContext.Provider value={contextValue}>
           <Switch>
             <Route 
@@ -99,7 +101,7 @@ class App extends React.Component {
             />
           </Switch>
         </StoreContext.Provider>
-        <div className="g-signin2" tabIndex='0' data-onsuccess="onSignIn"></div>
+        {/* <div className="g-signin2" tabIndex='0' data-onsuccess="onSignIn"></div> */}
       </div>
     );
   };

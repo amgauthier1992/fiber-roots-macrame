@@ -1,3 +1,9 @@
+.landing-container {
+  /* background-image: url("../../images/macrame-background1.png"); */
+  max-height: 100%;
+  max-width: 100vw;
+}
+
 #landing-description {
   font-family: "Bohemian";
   font-size: 105px;
@@ -13,11 +19,11 @@
 
 #macrame-img {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
   height: 1170px;
-  margin-right: 400px;
-  z-index: 0;
+  /* z-index: 0; */
 }
 
 .responsive-img {
