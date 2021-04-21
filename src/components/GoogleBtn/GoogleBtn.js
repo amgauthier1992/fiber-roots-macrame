@@ -12,7 +12,8 @@ class GoogleBtn extends React.Component {
     this.state = {
       isSignedIn: false,
       accessToken: '',
-      picture: ''
+      picture: '',
+      error: null
     };
 
     this.login = this.login.bind(this);
@@ -22,6 +23,8 @@ class GoogleBtn extends React.Component {
   }
 
   login = (response) => {
+    const id_token = response.getAuthResponse().id_token;
+
     if(response.accessToken){
       this.setState(state => ({
         isSignedIn: true,
@@ -35,6 +38,30 @@ class GoogleBtn extends React.Component {
         picture: payload.picture
       });
     }
+
+    fetch(`${config.REACT_APP_API_ENDPOINT}/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'session_token': id_token,
+      },
+      withCredentials: true,
+      credentials: 'include'
+    })
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('Authentication failed');
+        }
+        return res.json();
+      })
+      .then(() => {
+        console.log('Signed in')
+      })
+      .catch((err) => {
+        this.setState({
+          error: err.message
+        })
+      })
   }
 
   logout = (response) => {
@@ -42,6 +69,8 @@ class GoogleBtn extends React.Component {
       isSignedIn: false,
       accessToken: ''
     }));
+
+    //FETCH AND CLEAR COOKIE
   }
 
   handleLoginFailure = (response) => {

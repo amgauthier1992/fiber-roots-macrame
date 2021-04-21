@@ -39,7 +39,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //Get products from API
-    fetch(`${config.REACT_APP_API_ENDPOINT}/api/products`, {
+    fetch(`${config.REACT_APP_API_ENDPOINT}/products`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
