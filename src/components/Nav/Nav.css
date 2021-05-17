@@ -27,3 +27,17 @@ svg {
   top: 0;
   right: 0;
 }
+
+#cart-span {
+  position: absolute;
+  top: 0;
+  right: 1.8%;
+  background: crimson;
+  /* background: rgb(100, 107, 95); */
+  font-size: 14px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+  margin-top: 1px;
+  z-index: -1;
+}

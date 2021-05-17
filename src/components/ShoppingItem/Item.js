@@ -1,5 +1,6 @@
 import React from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
+// import StoreContext from '../../contexts/StoreContext';
 import './Item.css';
 
 class ShoppingItem extends React.Component {
@@ -8,11 +9,9 @@ class ShoppingItem extends React.Component {
     isFlipped: false
   }
 
-  //prevent addToCart button click event from bubbling up and triggering cardFlip
-  handleAddToCart = (e) => {
-    e.stopPropagation();
-    console.log(e.currentTarget);
-    this.props.addCartItem(e.currentTarget)
+  handleAddToCart = (e, itemId) => {
+    e.stopPropagation(); //prevent addToCart button click event from bubbling up and triggering cardFlip
+    this.props.addCartItem(itemId)
   }
 
   render(){
@@ -21,7 +20,7 @@ class ShoppingItem extends React.Component {
 
     if(this.props.status){
       statusJSX = <div className='green'>In stock</div>
-      buttonJSX = <button id='add-cart-btn' className='btn-enabled' type='button' onClick={(e) => {this.handleAddToCart(e)}}>Add To Cart</button>
+      buttonJSX = <button id='add-cart-btn' className='btn-enabled' type='button' onClick={(e) => {this.handleAddToCart(e, this.props.id)}}>Add To Cart</button>
     } else {
       statusJSX = <div className='red'>Out of stock</div>
       buttonJSX = <button id='add-cart-btn' className='btn-disabled' type='button' disabled>Add To Cart</button>

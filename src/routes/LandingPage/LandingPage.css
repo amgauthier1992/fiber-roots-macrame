@@ -5,6 +5,7 @@
 }
 
 #landing-description {
+  position: absolute;
   font-family: "Bohemian";
   font-size: 105px;
   /* font-weight: bolder; */
@@ -13,7 +14,9 @@
   /* color: rgb(153, 117, 71); */
   color: rgba(87, 75, 59, 0.842);
   width: 700px;
-  margin: 400px 0 0 75px;
+  top: 30%;
+  left: 2%;
+  /* margin: 400px 0 0 75px; */
   word-wrap: break-word;
 }
 

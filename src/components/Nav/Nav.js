@@ -8,11 +8,11 @@ import './Nav.css'
 export default function Nav(props){
   return (
     <nav id='nav'>
-      <Link to='/'><Logo /></Link>
+      <Link to='/' title='Home'><Logo /></Link>
       <GoogleBtn/>
-      <Link to='/about'>About</Link>
-      <Link to='/browse'>Shop</Link>
-      <Link to='/cart'><FaShoppingBag /></Link>
+      <Link to='/about' title='About'>About</Link>
+      <Link to='/browse' title='Shop'>Shop</Link>
+      <Link to='/cart' title='Cart'><FaShoppingBag /><span id='cart-span'>{props.cartQty}</span></Link>
     </nav>
   );
 };

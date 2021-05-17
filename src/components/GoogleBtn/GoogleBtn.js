@@ -27,7 +27,7 @@ class GoogleBtn extends React.Component {
 
     if(response.accessToken){
       this.setState(state => ({
-        isSignedIn: true,
+        // isSignedIn: true,
         accessToken: response.accessToken
       }));
     }
@@ -50,12 +50,15 @@ class GoogleBtn extends React.Component {
     })
       .then(res => {
         if(!res.ok) {
-          throw new Error('Authentication failed');
+          // throw new Error('Authentication failed');
+          this.handleLoginFailure();
         }
-        return res.json();
       })
       .then(() => {
         console.log('Signed in')
+        this.setState({
+          isSignedIn: true
+        })
       })
       .catch((err) => {
         this.setState({
@@ -65,13 +68,48 @@ class GoogleBtn extends React.Component {
   }
 
   logout = (response) => {
-    this.setState(state => ({
-      isSignedIn: false,
-      accessToken: ''
-    }));
+  // logout = (response) => {
 
-    //FETCH AND CLEAR COOKIE
+    fetch(`${config.REACT_APP_API_ENDPOINT}/logout`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      withCredentials: true,
+      credentials: 'include'
+    })
+      .then(res => {
+        if(!res.ok){
+          this.handleLogoutFailure();
+        }
+      })
+      .then(() => {
+        console.log('Logging out')
+        this.setState({
+          isSignedIn: false,
+          accessToken: ''
+        })
+        // this.setState(state => ({
+        //   isSignedIn: false,
+        //   accessToken: ''
+        // }))
+      })
+      .catch((err) => {
+        this.setState({
+          error: err.message
+        })
+      })
   }
+
+  //**this also triggers a login somehow when using enter on the logout button/image**
+  onKeyDown = (e) => {
+    console.log(e.keyCode)
+    if (e.keyCode === 13) {
+      this.logout();
+      // e.preventDefault();
+      // e.stopPropagation();
+    }
+  };
 
   handleLoginFailure = (response) => {
     alert('Failed to log in')
@@ -93,7 +131,7 @@ class GoogleBtn extends React.Component {
           onLogoutSuccess={ this.logout }
           onFailure={ this.handleLogoutFailure }
           render={renderProps => (
-            <img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='google-profile-icon' onClick={renderProps.onClick}/>
+            <img className='google-profile-picture' src={this.state.picture} title='Log Out' alt='google-profile-icon' tabIndex={0} onKeyDown={(e) => this.onKeyDown(e)} onClick={renderProps.onClick}/>
           )}
         />
         : 
@@ -106,7 +144,7 @@ class GoogleBtn extends React.Component {
           responseType='code,token'
           isSignedIn={true}
           render={renderProps => (
-            <a href='#' onClick={renderProps.onClick}>Login</a>
+            <a href='#' tabIndex={0} onClick={renderProps.onClick}>Login</a>
           )}
         />
       }
