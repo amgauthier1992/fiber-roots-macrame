@@ -25,27 +25,3 @@ export const cartReducers = (
       return state;
   }
 };
-
-// //job of reducer is to return new state based on the action passed as
-// //an argument
-
-// //payload of action should contain minimum information we need to update
-// //our system
-
-// function cartReducer(state = [], action) {
-//   if(action.type === 'itemAdded'){
-//     return [
-//       //copy current state as we dont
-//       ...state,
-//       {
-        
-//       }
-//     ]
-//   }
-//   else if(action.type === 'itemRemoved'){
-//     return state.filter()
-//   }
-//   //if an action does not match one of the actions above, we dont want
-//   //everything to blow up, so we just return the current state
-//   return state;
-// }
